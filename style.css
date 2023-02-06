@@ -1,0 +1,382 @@
+:root {
+  
+  /* ## Colors */
+  
+  /* ### Primary */
+  
+  --Scissors-Gradient: hsl(39, 89%, 49%);
+  --Scissors-Gradient-to: hsl(40, 84%, 53%);
+  --Paper-Gradient: hsl(230, 89%, 62%);
+  --Paper-Gradient-to: hsl(230, 89%, 65%);
+  --Rock-Gradient: hsl(349, 71%, 52%);
+  --Rock-Gradient-to: hsl(349, 70%, 56%);
+  --Lizard-Gradient: hsl(261, 73%, 60%);
+  --Lizard-Gradient-to: hsl(261, 72%, 63%);
+  --Cyan: hsl(189, 59%, 53%);
+  --Cyan-to: hsl(189, 58%, 57%);
+  
+  /* ### Neutral */
+  
+  --Dark-Text: hsl(229, 25%, 31%);
+  --Score-Text: hsl(229, 64%, 46%);
+  --Header-Outline: hsl(217, 16%, 45%);
+  
+  /* ### Background */
+  
+  --Radial-Gradient: hsl(214, 47%, 23%);
+  --Radial-Gradient-to: hsl(237, 49%, 15%);
+}
+
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Barlow Semi Condensed', sans-serif;
+}
+
+body {
+  background-image: linear-gradient(var(--Radial-Gradient), var(--Radial-Gradient-to));
+  background-color: var(--Radial-Gradient-to);
+  background-repeat: no-repeat;
+  background-size: cover;
+  min-height: 100vh;
+  color: white;
+}
+
+.header {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 1rem;
+  
+  max-width: 700px;
+  width: 90%;
+  padding: clamp(.5rem,3vw,1rem);
+  border-radius: 1rem;
+  border: 2px solid var(--Header-Outline);
+  display: flex;
+  justify-content: space-between;
+}
+.header img {
+  width: clamp(5rem,30vw,10rem);
+}
+
+.header .score-container {
+  
+ 
+  background-color: white;
+  border-radius: .3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: clamp(.2rem,10vw,.5rem) clamp(1rem,8vw,2rem);
+}
+
+.header .score-container .text {
+  color: var(--Score-Text);
+  font-size: clamp(.7rem,8vw,1.2rem);
+}
+.header .score-container .score {
+  color: var(--Dark-Text);
+  font-size: clamp(1.5rem,8vw,3rem);
+  font-weight: bold;
+}
+
+.content {
+  position: relative;
+  top: 15rem;
+  left: 50%;
+  transform: translateX(-50%);
+  max-width: 300px;
+  width: 80%;
+  height: 15rem;
+  background-image: url(images/bg-triangle.svg);
+  background-position: center top;
+  background-size: cover;
+  background-repeat: no-repeat;
+  z-index: 5;
+}
+
+.paper {
+  cursor: pointer;
+  position: absolute;
+  width: clamp(5rem,40vw,7.5rem);
+  aspect-ratio: 1/1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  z-index: 1;
+  background-image: linear-gradient(var(--Paper-Gradient-to), var(--Paper-Gradient));
+}
+
+.paper-position {
+  left: -5%;
+  top: -10%;
+}
+
+.paper::after {
+  content: '';
+  background-color: white;
+  width: 75%;
+  height: 75%;
+  border-radius: 50%;
+  position: absolute;
+  z-index: -1;
+}
+
+.paper img {
+  width: 30%;
+}
+
+.scissors {
+  cursor: pointer;
+  position: absolute;
+  
+  width: clamp(5rem,40vw,7.5rem);
+  aspect-ratio: 1/1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  z-index: 1;
+  background-image: linear-gradient(var(--Scissors-Gradient-to), var(--Scissors-Gradient));
+}
+
+.scissors-position {
+  right: -5%;
+  top: -10%;
+}
+
+.scissors::after {
+  content: '';
+  background-color: white;
+  width: 75%;
+  height: 75%;
+  border-radius: 50%;
+  position: absolute;
+  z-index: -1;
+}
+
+.scissors img {
+  width: 30%;
+}
+.rock {
+  cursor: pointer;
+  width: clamp(5rem,40vw,7.5rem);
+  aspect-ratio: 1/1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  z-index: 1;
+  background-image: linear-gradient(var(--Rock-Gradient-to), var(--Rock-Gradient));
+  position: absolute;
+}
+
+.rock-position {
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: -5%;
+}
+.rock::after {
+  content: '';
+  background-color: white;
+  width: 75%;
+  height: 75%;
+  border-radius: 50%;
+  position: absolute;
+  z-index: -1;
+}
+
+.rock img {
+  width: 30%;
+}
+
+.rules {
+  padding: .3rem 1rem;
+  border-radius: .5rem;
+  border: 1px solid white;
+  position: absolute;
+  top: 30rem;
+  right: 5%;
+  letter-spacing: 2px;
+  background-color: transparent;
+  color: white;
+  outline: none;
+  cursor: pointer;
+  z-index: 99999999;
+}
+.black {
+  color: black;
+  border: 2px solid black;
+}
+
+.rules-hidden {
+  background-color: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+}
+
+.rules-hidden .background {
+  background-image: url(images/image-rules.svg);
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-color: white;
+  max-width: 400px;
+  width: 80%;
+
+  height: 25rem;
+  margin-top: 8rem;
+
+  display: flex;
+  justify-content: space-between;
+  padding: 1.5rem;
+}
+
+.rules-hidden .background p {
+  color: black;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.rules-hidden .background img {
+  width: 1rem;
+  height: 1rem;
+  cursor: pointer;
+}
+
+.none {
+  display: none;
+}
+
+/* picked */
+.content-picked {
+  position: relative;
+  top: 13rem;
+  left: 50%;
+  transform: translateX(-50%);
+  max-width: 600px;
+  width: 80%;
+  height: 15rem;
+  /* we need display none here */
+  display: none;
+  justify-content: space-around;
+  gap: 1rem;
+}
+
+.content-picked .user {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  text-align: center;
+}
+
+.content-picked .user .user-picked {
+  background-color: rgba(0, 0, 0, 0.2);
+  width: 7rem;
+  aspect-ratio: 1/1;
+  border-radius: 50%;
+}
+
+.content-picked .house {
+  display: flex;
+  text-align: center;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.content-picked .house p {
+  font-size: clamp(.6rem,4vw,1rem);
+}
+.content-picked .user p {
+  font-size: clamp(.6rem,4vw,1rem);
+}
+
+.content-picked .house .house-picked {
+  background-color: rgba(0, 0, 0, 0.2);
+  width: 7rem;
+  aspect-ratio: 1/1;
+  border-radius: 50%;
+}
+
+/* result */
+
+.result {
+  align-self: center;
+  display: none;
+  flex-direction: column;
+  gap: .5rem;
+  align-items: flex;
+}
+.result p {
+  font-size: clamp(1.2rem,5vw,2rem);
+  text-align: center;
+}
+.result button {
+  border: none;
+  outline: none;
+  padding: clamp(.2rem,2vw,.5rem) clamp(1rem,2vw,1.5rem);
+  border-radius: 1rem;
+  text-align: center;
+  cursor: pointer;
+  transition: .3s;
+}
+.result button:hover {
+  color: red;
+}
+
+@media only screen and (max-width:450px) {
+  .result {
+    top: 17rem;
+    position: absolute;
+  }
+   .content-picked {
+    top: 8rem;
+    width: 90%;
+    height: 15rem;
+  }
+  .rules {
+    top: 33.5rem;
+    right: 50%;
+    transform: translateX(50%);
+  }
+  .rules-hidden .background {
+    width: 100%;
+    height: 100%;
+    margin-top: 0;
+    background-position: center center;
+  }
+  .content-picked .user .user-picked {
+    width: clamp(5rem,40vw,7.5rem);
+  }
+  .content-picked .house .house-picked {
+    width: clamp(5rem,40vw,7.5rem);
+  }
+}
+
+@media only screen and (max-width: 250px) {
+  .paper-position {
+    left: -10%;
+    top: -5%;
+  }
+  .scissors-position {
+    right: -10%;
+    top: -5%;
+  }
+  .rock-position {
+    left: 50%;
+    bottom: 0;
+  }
+  .content {
+    top: 10rem;
+    height: 12rem;
+  }
+}
