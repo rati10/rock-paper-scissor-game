@@ -80,7 +80,7 @@ chooseBtn.forEach(choose => {
       result.style.display = 'flex'
       resultP.textContent = 'YOU LOSE'
       if(currentScore !== 0) {
-        currentScore++
+        currentScore--
         score.textContent = currentScore
       }
     }
