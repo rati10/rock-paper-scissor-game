@@ -54,7 +54,7 @@ const getHousePicked = () => {
   })
 }
 
-let currentScore = 13
+let currentScore = 0
 
 const result = document.querySelector('.result')
 const resultP = document.querySelector('.result p')
